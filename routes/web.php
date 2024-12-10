@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,9 +33,10 @@ Route::get('/quiz', function () {
     return view('quiz');
 })->name('quiz');
 
-Route::get('/results', function () {
-    return view('results');
-})->name('results');
+Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
+
+Route::get('/quiz/result/{id}', [ResultController::class, 'show'])->name('quiz.result');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
