@@ -92,6 +92,63 @@
           </div> --}}
         </div>
       </div>
+
+      <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Choose Your Treatment</h1>
+        </div>
+    
+        <div class="mt-10 flex justify-center gap-10">
+            <div class="flex flex-col items-start">
+              <a href="#" class="treatment-item" data-image="../img/acne.jpg">Acne</a>
+              <a href="#" class="treatment-item" data-image="../img/acne_scars.jpg">Acne Scars & Pigmentation</a>
+              <a href="#" class="treatment-item" data-image="../img/ageing.jpg">Ageing</a>
+              <a href="#" class="treatment-item" data-image="../img/melasma.jpg">Melasma</a>
+              <a href="#" class="treatment-item" data-image="../img/rosacea.jpg">Rosacea</a>
+              <a href="#" class="treatment-item" data-image="../img/skin_glow.jpg">Skin Glow</a>
+            </div>
+    
+            <div class="image-container">
+                <img id="treatment-image" src="" alt="Treatment Image" class="hidden w-64 h-64 object-cover rounded-lg" />
+            </div>
+        </div>
+      </div>
+
+      <style>
+        .treatment-item {
+            font-size: 1.25rem;
+            color: #3b82f6; /* Tailwind blue-500 */
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+    
+        .treatment-item:hover {
+            color: #1e40af; /* Darker blue on hover */
+        }
+    
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px; /* Space between list and image */
+        }
+    
+        .hidden {
+            display: none;
+        }
+      </style>
       
+      <script>
+        document.querySelectorAll('.treatment-item').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default anchor behavior
+                const imageSrc = this.getAttribute('data-image');
+                const imageElement = document.getElementById('treatment-image');
+                imageElement.src = imageSrc;
+                imageElement.classList.remove('hidden'); // Show the image
+            });
+        });
+      </script>
     </body>
 </html>
