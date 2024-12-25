@@ -1,0 +1,41 @@
+php artisan tinker
+
+use App\Models\Product;
+
+Product::create([
+    'product_name' => 'ANUA NIACINAMIDE 10% + TXA 4% SERUM 30ML',
+    'product_price' => 1,900,
+    'product_description' => 'Tackle hyperpigmentation with this serum formulated with 10% niacinamide and 4% tranexamic acid to fade dark spots and acne scars. It contains alpha-arbutin to brighten and even skin tone, as well as hyaluronic acid and botanical oils to moisturize and soothe skin.',
+    'how_to_use' => 'Apply a few drops to affected areas and gradually increase the usage period accordingly. Use in the morning and at night before oil and moisturizer. Can be used daily but discontinue if irritation occurs. When used in the morning, be certain to wear sun protection with SPF30 or higher.',
+    'product_ingredients' => 'Water, Glycerin, Niacinamide, Tranexamic Acid, Butylene Glycol, Diethoxyethyl Succinate, 1,2-Hexanediol, Arbutin, Sodium Hyaluronate, Alpha-Arbutin, Coccinia Indica Fruit Extract, Eclipta Prostrata Extract, Macadamia Integrifolia Seed Oil, Olea Europaea (Olive) Fruit Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Vitis Vinifera (Grape) Seed Oil, Theobroma Cacao (Cocoa) Extract, Hydrolyzed Hyaluronic Acid, Chamaecyparis Obtusa Leaf Extract, Prunus Persica (Peach) Flower Extract, Camellia Sinensis Seed Oil, Yeast Ferment Extract, Centella Asiatica Extract, Artemisia Princeps Leaf Extract, Candida Bombicola/Glucose/Methyl Rapeseedate Ferment, Hyaluronic Acid, Pentylene Glycol, Betaine Salicylate, Sucrose Palmitate, Hydrogenated Lecithin, Gellan Gum, Sodium Phytate, Cellulose, Caprylic/Capric Triglyceride, Panthenol, Cyanocobalamin, Polyglutamic Acid, 3-0-Ethyl Ascorbic Acid, Ceramide NP, Dextrin, Asiaticoside, Madecassic Acid, Asiatic Acid, Dimethylsilanol Hyaluronate, Hydrolyzed Sodium Hyaluronate, Potassium Hyaluronate, Hydroxypropyltrimonium Hyaluronate, Sodium Hyaluronate Crosspolymer, Sodium Hyaluronate Dimethylsilanol, Sodium Acetylated Hyaluronate, Xanthan Gum'
+    'product_image' => 'resources/img/products/product_img_1.png'
+]);
+
+Product::create([
+    'product_name' => 'BEAUTY OF JOSEON SUNSCREEN: RICE + PROBIOTICS SPF 50+ PA++++ (50ML)',
+    'product_price' => 1,300,
+    'product_description' => 'Relief Sun : Rice + Probiotics SPF50+ PA++++ is Our new chemical sunscreen that applies gently on the skin and by also including skin calming and brightening ingredients, it allows sensitive skin types to use it with ease as well.',
+    'how_to_use' => 'Take an appropirate amount of sunscreen and apply it onto your face and neck',
+    'product_ingredients' => 'Water, Oryza Sativa (Rice) Extract (30%), Dibutyl Adipate, Propanediol, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Polymethylsilsesquioxane, Ethylhexyl Triazone, Niacinamide, Methylene Bis-benzotriazolyl Tetramethylbutylphenol, Coco-caprylate/Caprate, Caprylyl Methicone, Diethylhexyl Butamido Triazone, Glycerin, Butylene Glycol, Oryza Sativa (Rice) Germ Extract, Camellia Sinensis Leaf Extract, Lactobacillus/Pumpkin Ferment Extract, Bacillus/Soybean Ferment Extract, Saccharum Officinarum (Sugarcane) Extract, Macrocystis Pyrifera (Kelp) Extract, Cocos Nucifera (Coconut) Fruit Extract, Panax Ginseng Root Extract, Camellia Sinensis Leaf Extract, Monascus/Rice Ferment, Pentylene Glycol, Behenyl Alcohol, Poly C10-30 Alkyl Acrylate, Polyglyceryl-3 Methylglucose Distearate, Decyl Glucoside, Tromethamine, Carbomer, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, 1,2-Hexanediol,Sodium Stearoyl Glutamate, Polyacrylate Crosspolymer-6, Ethylhexylglycerin, Adenosine, Xanthan Gum, Tocopherol, Lactobacillus/Rice Ferment, Aspergillus Ferment, Saccharomyces/Rice Ferment Filtrate'
+    'product_image' => 'product_img_2.png'
+]);
+
+
+Product::create([
+    'product_name' => 'ISNTREE HYALURONIC ACID TONER 200 ML',
+    'product_price' => 1,000,
+    'product_description' => 'Infused with 50% of concentrated hyaluronic acid, trehalose, birch sap and collagen the toner delivers intense hydration and freshness to skin helping to rejuvenate it for a dewy, plumbed and bright complexion. It is suitable for all skin types, especially dry, dehydrated, dull skins.',
+    'how_to_use' => 'After cleansing, apply a small amount on your entire face. Gently pat using fingertips to aid absorption, and then go forth with your moisturizers.',
+    'product_ingredients' => 'Hyaluronic Acid, Betaine, Butylene Glycol, 1,2-Hexanediol, Sodium Hyaluronate, Panthenol, Arginine, Allantoin, Ethyl Hexanediol, Sodium Polyacrylate, Carbomer, Phenoxyethanol'
+    'product_image' => 'product_img_3.png'
+]);
+
+
+Product::create([
+    'product_name' => 'GOODAL GREEN TANGERINE VITA C DARK SPOT SERUM 40ML',
+    'product_price' => 2,200,
+    'product_description' => 'A new concept vitamin serum that makes blemishes and freckles lighter and disappear in 2 weeks.20 types of chemical pernicious ingredients ZERO! : Hypoallergenic vitamin serum that has natural Vitamin C from tangerines 70%..Moist daily vitamin C serum : Absorbs into the skin, gives a fresh and good finish to your skin.Transparent gel that has moist finish without stickiness or ethanol.',
+    'how_to_use' => 'After cleansing, take a small amount at the serum stage of your skincare routine.Gently apply across your face and neck, then tap to absorb.Thinly apply an additional layer over the dark spots and blemishes.',
+    'product_ingredients' => 'Citrus Tangerina Extract, Butylene Glycol, 1,2-Hexanediol, Dipropylene Glycol, Methyl Gluceth-20, Aqua, Arbutin, Glycereth-26, Nicotinamide, Chondrus Crispus Extract, Saccharum Officinarum Extract, Citrus Aurantium Bergamia Fruit Oil, Melia Azadirachta Flower Extract, Melia Azadirachta Leaf Extract, Curcuma Longa Root Extract, Ocimum Sanctum Leaf Extract, Citrus Medica Limonum Peel Oil, Lavandula Angustifolia Oil, Cananga Odorata Flower Oil, Orange, Eucalyptus Globulus Leaf Extract, Corallina Officinalis Extract, Centella Asiatica Extract, Polygonum Cuspidatum Root Extract, Scutellaria Baicalensis Root Extract, Camellia Sinensis Leaf Extract, Glycyrrhiza Glabra Root Extract, Anthemis Nobilis Flower Extract, Rosmarinus Officinalis Leaf Extract, Ammonium Acryloyldimethyltaurate/​Vp Copolymer, Dexpanthenol, Choleth-24, Tromethamine, Ethylhexylglycerin, Hydrolyzed Jojoba Esters, Allantoin, Sodium Hyaluronate, Tocopheryl Acetate, Adenosine, Ascorbyl Glucoside, Dipotassium Glycyrrhizate, Maltodextrin, Saccharide Hydrolysate, Carbomer, Edetate Disodium'
+    'product_image' => 'product_img_4.jpg'
+]);
