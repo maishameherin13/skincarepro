@@ -1,41 +1,113 @@
-php artisan tinker
+//INSERTING PRODUCT
+-- Inserting the first product
+INSERT INTO products (
+    product_name, 
+    product_price, 
+    product_description, 
+    how_to_use, 
+    product_ingredients, 
+    product_image
+) VALUES (
+    'ANUA NIACINAMIDE 10% + TXA 4% SERUM 30ML', 
+    1900, 
+    'Tackle hyperpigmentation with this serum formulated with 10% niacinamide and 4% tranexamic acid to fade dark spots and acne scars. It contains alpha-arbutin to brighten and even skin tone, as well as hyaluronic acid and botanical oils to moisturize and soothe skin.', 
+    'Apply a few drops to affected areas and gradually increase the usage period accordingly. Use in the morning and at night before oil and moisturizer. Can be used daily but discontinue if irritation occurs. When used in the morning, be certain to wear sun protection with SPF30 or higher.', 
+    'Water, Glycerin, Niacinamide, Tranexamic Acid, Butylene Glycol, Diethoxyethyl Succinate, 1,2-Hexanediol, Arbutin, Sodium Hyaluronate, Alpha-Arbutin, Coccinia Indica Fruit Extract, Eclipta Prostrata Extract, Macadamia Integrifolia Seed Oil, Olea Europaea (Olive) Fruit Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Vitis Vinifera (Grape) Seed Oil, Theobroma Cacao (Cocoa) Extract, Hydrolyzed Hyaluronic Acid, Chamaecyparis Obtusa Leaf Extract, Prunus Persica (Peach) Flower Extract, Camellia Sinensis Seed Oil, Yeast Ferment Extract, Centella Asiatica Extract, Artemisia Princeps Leaf Extract, Candida Bombicola/Glucose/Methyl Rapeseedate Ferment, Hyaluronic Acid, Pentylene Glycol, Betaine Salicylate, Sucrose Palmitate, Hydrogenated Lecithin, Gellan Gum, Sodium Phytate, Cellulose, Caprylic/Capric Triglyceride, Panthenol, Cyanocobalamin, Polyglutamic Acid, 3-0-Ethyl Ascorbic Acid, Ceramide NP, Dextrin, Asiaticoside, Madecassic Acid, Asiatic Acid, Dimethylsilanol Hyaluronate, Hydrolyzed Sodium Hyaluronate, Potassium Hyaluronate, Hydroxypropyltrimonium Hyaluronate, Sodium Hyaluronate Crosspolymer, Sodium Hyaluronate Dimethylsilanol, Sodium Acetylated Hyaluronate, Xanthan Gum', 
+    'resources/img/products/product_img_1.png'
+);
 
-use App\Models\Product;
+-- Inserting the second product
+INSERT INTO products (
+    product_name, 
+    product_price, 
+    product_description, 
+    how_to_use, 
+    product_ingredients, 
+    product_image
+) VALUES (
+    'BEAUTY OF JOSEON SUNSCREEN: RICE + PROBIOTICS SPF 50+ PA++++ (50ML)', 
+    1300, 
+    'Relief Sun : Rice + Probiotics SPF50+ PA++++ is Our new chemical sunscreen that applies gently on the skin and by also including skin calming and brightening ingredients, it allows sensitive skin types to use it with ease as well.', 
+    'Take an appropriate amount of sunscreen and apply it onto your face and neck', 
+    'Water, Oryza Sativa (Rice) Extract (30%), Dibutyl Adipate, Propanediol, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Polymethylsilsesquioxane, Ethylhexyl Triazone, Niacinamide, Methylene Bis-benzotriazolyl Tetramethylbutylphenol, Coco-caprylate/Caprate, Caprylyl Methicone, Diethylhexyl Butamido Triazone, Glycerin, Butylene Glycol, Oryza Sativa (Rice) Germ Extract, Camellia Sinensis Leaf Extract, Lactobacillus/Pumpkin Ferment Extract, Bacillus/Soybean Ferment Extract, Saccharum Officinarum (Sugarcane) Extract, Macrocystis Pyrifera (Kelp) Extract, Cocos Nucifera (Coconut) Fruit Extract, Panax Ginseng Root Extract, Camellia Sinensis Leaf Extract, Monascus/Rice Ferment, Pentylene Glycol, Behenyl Alcohol, Poly C10-30 Alkyl Acrylate, Polyglyceryl-3 Methylglucose Distearate, Decyl Glucoside, Tromethamine, Carbomer, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, 1,2-Hexanediol, Sodium Stearoyl Glutamate, Polyacrylate Crosspolymer-6, Ethylhexylglycerin, Adenosine, Xanthan Gum, Tocopherol, Lactobacillus/Rice Ferment, Aspergillus Ferment, Saccharomyces/Rice Ferment Filtrate', 
+    'resources/img/products/product_img_2.png'
+);
 
-Product::create([
-    'product_name' => 'ANUA NIACINAMIDE 10% + TXA 4% SERUM 30ML',
-    'product_price' => 1,900,
-    'product_description' => 'Tackle hyperpigmentation with this serum formulated with 10% niacinamide and 4% tranexamic acid to fade dark spots and acne scars. It contains alpha-arbutin to brighten and even skin tone, as well as hyaluronic acid and botanical oils to moisturize and soothe skin.',
-    'how_to_use' => 'Apply a few drops to affected areas and gradually increase the usage period accordingly. Use in the morning and at night before oil and moisturizer. Can be used daily but discontinue if irritation occurs. When used in the morning, be certain to wear sun protection with SPF30 or higher.',
-    'product_ingredients' => 'Water, Glycerin, Niacinamide, Tranexamic Acid, Butylene Glycol, Diethoxyethyl Succinate, 1,2-Hexanediol, Arbutin, Sodium Hyaluronate, Alpha-Arbutin, Coccinia Indica Fruit Extract, Eclipta Prostrata Extract, Macadamia Integrifolia Seed Oil, Olea Europaea (Olive) Fruit Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Vitis Vinifera (Grape) Seed Oil, Theobroma Cacao (Cocoa) Extract, Hydrolyzed Hyaluronic Acid, Chamaecyparis Obtusa Leaf Extract, Prunus Persica (Peach) Flower Extract, Camellia Sinensis Seed Oil, Yeast Ferment Extract, Centella Asiatica Extract, Artemisia Princeps Leaf Extract, Candida Bombicola/Glucose/Methyl Rapeseedate Ferment, Hyaluronic Acid, Pentylene Glycol, Betaine Salicylate, Sucrose Palmitate, Hydrogenated Lecithin, Gellan Gum, Sodium Phytate, Cellulose, Caprylic/Capric Triglyceride, Panthenol, Cyanocobalamin, Polyglutamic Acid, 3-0-Ethyl Ascorbic Acid, Ceramide NP, Dextrin, Asiaticoside, Madecassic Acid, Asiatic Acid, Dimethylsilanol Hyaluronate, Hydrolyzed Sodium Hyaluronate, Potassium Hyaluronate, Hydroxypropyltrimonium Hyaluronate, Sodium Hyaluronate Crosspolymer, Sodium Hyaluronate Dimethylsilanol, Sodium Acetylated Hyaluronate, Xanthan Gum'
-    'product_image' => 'resources/img/products/product_img_1.png'
-]);
+-- Inserting the third product
+INSERT INTO products (
+    product_name, 
+    product_price, 
+    product_description, 
+    how_to_use, 
+    product_ingredients, 
+    product_image
+) VALUES (
+    'ISNTREE HYALURONIC ACID TONER 200 ML', 
+    1000, 
+    'Infused with 50% of concentrated hyaluronic acid, trehalose, birch sap and collagen the toner delivers intense hydration and freshness to skin helping to rejuvenate it for a dewy, plumbed and bright complexion. It is suitable for all skin types, especially dry, dehydrated, dull skins.', 
+    'After cleansing, apply a small amount on your entire face. Gently pat using fingertips to aid absorption, and then go forth with your moisturizers.', 
+    'Hyaluronic Acid, Betaine, Butylene Glycol, 1,2-Hexanediol, Sodium Hyaluronate, Panthenol, Arginine, Allantoin, Ethyl Hexanediol, Sodium Polyacrylate, Carbomer, Phenoxyethanol', 
+    'resources/img/products/product_img_3.png'
+);
 
-Product::create([
-    'product_name' => 'BEAUTY OF JOSEON SUNSCREEN: RICE + PROBIOTICS SPF 50+ PA++++ (50ML)',
-    'product_price' => 1,300,
-    'product_description' => 'Relief Sun : Rice + Probiotics SPF50+ PA++++ is Our new chemical sunscreen that applies gently on the skin and by also including skin calming and brightening ingredients, it allows sensitive skin types to use it with ease as well.',
-    'how_to_use' => 'Take an appropirate amount of sunscreen and apply it onto your face and neck',
-    'product_ingredients' => 'Water, Oryza Sativa (Rice) Extract (30%), Dibutyl Adipate, Propanediol, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Polymethylsilsesquioxane, Ethylhexyl Triazone, Niacinamide, Methylene Bis-benzotriazolyl Tetramethylbutylphenol, Coco-caprylate/Caprate, Caprylyl Methicone, Diethylhexyl Butamido Triazone, Glycerin, Butylene Glycol, Oryza Sativa (Rice) Germ Extract, Camellia Sinensis Leaf Extract, Lactobacillus/Pumpkin Ferment Extract, Bacillus/Soybean Ferment Extract, Saccharum Officinarum (Sugarcane) Extract, Macrocystis Pyrifera (Kelp) Extract, Cocos Nucifera (Coconut) Fruit Extract, Panax Ginseng Root Extract, Camellia Sinensis Leaf Extract, Monascus/Rice Ferment, Pentylene Glycol, Behenyl Alcohol, Poly C10-30 Alkyl Acrylate, Polyglyceryl-3 Methylglucose Distearate, Decyl Glucoside, Tromethamine, Carbomer, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, 1,2-Hexanediol,Sodium Stearoyl Glutamate, Polyacrylate Crosspolymer-6, Ethylhexylglycerin, Adenosine, Xanthan Gum, Tocopherol, Lactobacillus/Rice Ferment, Aspergillus Ferment, Saccharomyces/Rice Ferment Filtrate'
-    'product_image' => 'product_img_2.png'
-]);
+-- Inserting the fourth product
+INSERT INTO products (
+    product_name, 
+    product_price, 
+    product_description, 
+    how_to_use, 
+    product_ingredients, 
+    product_image
+) VALUES (
+    'GOODAL GREEN TANGERINE VITA C DARK SPOT SERUM 40ML', 
+    2200, 
+    'A new concept vitamin serum that makes blemishes and freckles lighter and disappear in 2 weeks.20 types of chemical pernicious ingredients ZERO! : Hypoallergenic vitamin serum that has natural Vitamin C from tangerines 70%..Moist daily vitamin C serum : Absorbs into the skin, gives a fresh and good finish to your skin.Transparent gel that has moist finish without stickiness or ethanol.', 
+    'After cleansing, take a small amount at the serum stage of your skincare routine. Gently apply across your face and neck, then tap to absorb. Thinly apply an additional layer over the dark spots and blemishes.', 
+    'Citrus Tangerina Extract, Butylene Glycol, 1,2-Hexanediol, Dipropylene Glycol, Methyl Gluceth-20, Aqua, Arbutin, Glycereth-26, Nicotinamide, Chondrus Crispus Extract, Saccharum Officinarum Extract, Citrus Aurantium Bergamia Fruit Oil, Melia Azadirachta Flower Extract, Melia Azadirachta Leaf Extract, Curcuma Longa Root Extract, Ocimum Sanctum Leaf Extract, Citrus Medica Limonum Peel Oil, Lavandula Angustifolia Oil, Cananga Odorata Flower Oil, Orange, Eucalyptus Globulus Leaf Extract, Corallina Officinalis Extract, Centella Asiatica Extract, Polygonum Cuspidatum Root Extract, Scutellaria Baicalensis Root Extract, Camellia Sinensis Leaf Extract, Glycyrrhiza Glabra Root Extract, Anthemis Nobilis Flower Extract, Rosmarinus Officinalis Leaf Extract, Ammonium Acryloyldimethyltaurate/​Vp Copolymer, Dexpanthenol, Choleth-24, Tromethamine, Ethylhexylglycerin, Hydrolyzed Jojoba Esters, Allantoin, Sodium Hyaluronate, Tocopheryl Acetate, Adenosine, Ascorbyl Glucoside, Dipotassium Glycyrrhizate, Maltodextrin, Saccharide Hydrolysate, Carbomer, Edetate Disodium', 
+    'resources/img/products/product_img_4.jpg'
+);
+
+-- Inserting the fifth product
+INSERT INTO products (
+    product_name, 
+    product_price, 
+    product_description, 
+    how_to_use, 
+    product_ingredients, 
+    product_image
+) VALUES (
+    'THE ORDINARY NIACINAMIDE 10% + ZINC 1% 30ML', 
+    1100, 
+    'Niacinamide (Vitamin B3) is indicated to reduce the appearance of skin blemishes and congestion. A high 10% concentration of this vitamin is supported in the formula by zinc salt of pyrrolidone carboxylic acid to balance visible aspects of sebum activity.', 
+    'Apply to entire face morning and evening before heavier creams. If irritation occurs, cease use and consult a physician. Use only as directed on unbroken skin. Patch testing prior to use is advised. Keep out of reach of children.', 
+    'Aqua (Water), Niacinamide, Pentylene Glycol, Zinc PCA, Dimethyl Isosorbide, Tamarindus Indica Seed Gum, Xanthan Gum, Isoceteth-20, Ethoxydiglycol, Phenoxyethanol, Chlorphenesin', 
+    'resources/img/products/product_img_5.jpg'
+);
 
 
-Product::create([
-    'product_name' => 'ISNTREE HYALURONIC ACID TONER 200 ML',
-    'product_price' => 1,000,
-    'product_description' => 'Infused with 50% of concentrated hyaluronic acid, trehalose, birch sap and collagen the toner delivers intense hydration and freshness to skin helping to rejuvenate it for a dewy, plumbed and bright complexion. It is suitable for all skin types, especially dry, dehydrated, dull skins.',
-    'how_to_use' => 'After cleansing, apply a small amount on your entire face. Gently pat using fingertips to aid absorption, and then go forth with your moisturizers.',
-    'product_ingredients' => 'Hyaluronic Acid, Betaine, Butylene Glycol, 1,2-Hexanediol, Sodium Hyaluronate, Panthenol, Arginine, Allantoin, Ethyl Hexanediol, Sodium Polyacrylate, Carbomer, Phenoxyethanol'
-    'product_image' => 'product_img_3.png'
-]);
 
+//INGREDIENTS TABLE
 
-Product::create([
-    'product_name' => 'GOODAL GREEN TANGERINE VITA C DARK SPOT SERUM 40ML',
-    'product_price' => 2,200,
-    'product_description' => 'A new concept vitamin serum that makes blemishes and freckles lighter and disappear in 2 weeks.20 types of chemical pernicious ingredients ZERO! : Hypoallergenic vitamin serum that has natural Vitamin C from tangerines 70%..Moist daily vitamin C serum : Absorbs into the skin, gives a fresh and good finish to your skin.Transparent gel that has moist finish without stickiness or ethanol.',
-    'how_to_use' => 'After cleansing, take a small amount at the serum stage of your skincare routine.Gently apply across your face and neck, then tap to absorb.Thinly apply an additional layer over the dark spots and blemishes.',
-    'product_ingredients' => 'Citrus Tangerina Extract, Butylene Glycol, 1,2-Hexanediol, Dipropylene Glycol, Methyl Gluceth-20, Aqua, Arbutin, Glycereth-26, Nicotinamide, Chondrus Crispus Extract, Saccharum Officinarum Extract, Citrus Aurantium Bergamia Fruit Oil, Melia Azadirachta Flower Extract, Melia Azadirachta Leaf Extract, Curcuma Longa Root Extract, Ocimum Sanctum Leaf Extract, Citrus Medica Limonum Peel Oil, Lavandula Angustifolia Oil, Cananga Odorata Flower Oil, Orange, Eucalyptus Globulus Leaf Extract, Corallina Officinalis Extract, Centella Asiatica Extract, Polygonum Cuspidatum Root Extract, Scutellaria Baicalensis Root Extract, Camellia Sinensis Leaf Extract, Glycyrrhiza Glabra Root Extract, Anthemis Nobilis Flower Extract, Rosmarinus Officinalis Leaf Extract, Ammonium Acryloyldimethyltaurate/​Vp Copolymer, Dexpanthenol, Choleth-24, Tromethamine, Ethylhexylglycerin, Hydrolyzed Jojoba Esters, Allantoin, Sodium Hyaluronate, Tocopheryl Acetate, Adenosine, Ascorbyl Glucoside, Dipotassium Glycyrrhizate, Maltodextrin, Saccharide Hydrolysate, Carbomer, Edetate Disodium'
-    'product_image' => 'product_img_4.jpg'
-]);
+INSERT INTO ingredients (ingredient_name, ingredient_description)
+VALUES
+('Niacinamide', 'Niacinamide, also known as Vitamin B3, is a water-soluble vitamin that offers a wide range of skin benefits. It helps to visibly reduce the appearance of dark spots, hyperpigmentation, and uneven skin tone by inhibiting melanin transfer in skin cells. Niacinamide is also known for its ability to strengthen the skin’s barrier, helping it retain moisture and protecting against environmental damage. Additionally, it has anti-inflammatory properties that help reduce redness, irritation, and acne breakouts, making it suitable for all skin types, especially sensitive and acne-prone skin.'),
+ 
+('Hyaluronic Acid', 'Hyaluronic Acid is a naturally occurring substance in the skin that plays a key role in maintaining hydration levels. It is known for its remarkable ability to attract and hold onto moisture, making the skin look plump, dewy, and well-hydrated. As a humectant, it draws moisture from the environment into the skin, providing long-lasting hydration. It also improves the skin’s elasticity, smoothness, and texture, reducing the appearance of fine lines and wrinkles. Hyaluronic Acid is gentle on the skin and is suitable for all skin types, including dry, oily, and sensitive skin.'),
+ 
+('Vitamin C', 'Vitamin C is a powerful antioxidant that helps protect the skin from oxidative stress caused by free radicals, which are generated from exposure to UV rays and pollution. It plays a vital role in the production of collagen, the protein responsible for maintaining skin firmness and elasticity. Vitamin C brightens the skin by inhibiting the production of melanin, reducing the appearance of dark spots, hyperpigmentation, and age spots. It also helps to repair skin damage, reduce redness, and improve overall skin radiance, leaving the complexion looking youthful and glowing.'),
+ 
+('Retinol', 'Retinol, a form of Vitamin A, is widely regarded as one of the most effective anti-aging ingredients. It works by promoting the turnover of skin cells, encouraging the shedding of dead skin cells while stimulating the production of new, healthy skin. This process helps to reduce the appearance of fine lines, wrinkles, and age spots, while also improving skin texture. Retinol also helps with acne by unclogging pores and preventing breakouts. It can make the skin more sensitive to the sun, so it is best used at night and with proper sun protection during the day.'),
+ 
+('Salicylic Acid', 'Salicylic Acid is a beta-hydroxy acid (BHA) that is primarily known for its ability to exfoliate the skin and penetrate deep into the pores. It helps to unclog pores by breaking down the bonds that hold dead skin cells together, allowing for easier removal of debris and buildup. This makes it particularly effective in treating acne, blackheads, and whiteheads. Salicylic Acid also has anti-inflammatory properties, which help reduce redness and irritation caused by acne breakouts. Additionally, it helps improve skin texture and tone by gently exfoliating the skin, leaving it smoother and clearer. Salicylic Acid is best suited for oily and acne-prone skin types.'),
+ 
+('Aloe Vera', 'Aloe Vera is a plant extract known for its soothing and healing properties. It contains vitamins, minerals, and antioxidants that help to calm and hydrate the skin. Aloe Vera is widely used to treat sunburns, minor burns, and skin irritations due to its cooling and anti-inflammatory effects. It also promotes the healing of damaged skin, reduces redness, and provides moisture without feeling greasy. Aloe Vera helps to balance the skin’s oil production, making it suitable for both dry and oily skin types. Its natural composition makes it a popular ingredient for sensitive skin as well.'),
+ 
+('Tea Tree Oil', 'Tea Tree Oil is an essential oil derived from the leaves of the Melaleuca alternifolia plant. It is renowned for its antimicrobial and anti-inflammatory properties, making it effective in treating acne and other skin conditions. Tea Tree Oil helps to kill acne-causing bacteria, reduce swelling, and prevent the formation of new pimples and breakouts. It is often used to target blemishes, blackheads, and whiteheads. Tea Tree Oil also helps to soothe irritated skin, reduce redness, and calm inflammation, making it ideal for oily and acne-prone skin types.'),
+ 
+('Chamomile Extract', 'Chamomile Extract is a gentle botanical ingredient known for its calming and anti-inflammatory properties. It contains antioxidants that help reduce redness, irritation, and swelling, making it an excellent choice for sensitive and inflamed skin. Chamomile also helps to soothe conditions such as eczema and rosacea, while promoting the healing of damaged skin. It has a mild, relaxing scent that further contributes to its ability to calm and refresh the skin. Chamomile Extract is perfect for those looking to alleviate skin stress and maintain a balanced complexion.'),
+ 
+('Peptides', 'Peptides are short chains of amino acids that are essential for maintaining healthy skin. They play a crucial role in building and repairing the skin’s protective barrier and stimulating collagen production. As a result, peptides can improve skin firmness, reduce the appearance of fine lines and wrinkles, and enhance skin elasticity. They also help to retain moisture in the skin, preventing dehydration. Peptides are suitable for all skin types, and they are especially beneficial for mature skin, as they help restore and maintain a youthful appearance.'),
+ 
+('Zinc', 'Zinc is an essential mineral that has numerous benefits for the skin, especially in the treatment of acne and inflammation. It helps regulate oil production, reduce the occurrence of acne, and minimize scarring. Zinc has anti-inflammatory properties that help calm irritated skin, reduce redness, and promote faster healing of breakouts. It also plays a vital role in skin cell turnover, helping the skin repair itself more quickly. Zinc is ideal for oily, acne-prone skin, but its soothing properties make it beneficial for all skin types.'),
+ 
+('Caffeine', 'Caffeine is a potent antioxidant that helps protect the skin from environmental stressors such as UV radiation and pollution. It is known for its ability to reduce puffiness and dark circles under the eyes by stimulating circulation and constricting blood vessels. Caffeine also has anti-inflammatory effects, which help reduce redness and irritation. In addition, it can improve the overall appearance of the skin by reducing the look of cellulite, tightening and firming the skin. Caffeine is often used in eye creams, serums, and body treatments to refresh and revitalize the skin.');
