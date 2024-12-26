@@ -30,7 +30,7 @@
                     <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="SkincarePro Logo">
                 </a>
             </div>
-            <div class="hidden lg:flex lg:gap-x-12 lg:justify-end">
+            <div class="lg:flex lg:gap-x-12 lg:justify-end">
                 <a href="{{ route('aboutus') }}" class="text-sm font-semibold text-gray-900">About Us</a>
                 <a href="{{ route('register') }}" class="text-sm font-semibold text-gray-900">Register</a>
                 <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-900">Log in</a>
