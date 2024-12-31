@@ -25,5 +25,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Ingredient::class, 'ingredient_product', 'product_id', 'ingredient_id');
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id'); // Ensure the foreign key is 'product_id'
+    }
 }
 
