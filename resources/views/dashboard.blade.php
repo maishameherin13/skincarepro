@@ -33,7 +33,9 @@
                                         <div class="mt-4 p-6 bg-gray-100 rounded-lg shadow-sm">
                                             <ul class="list-disc pl-6 space-y-2 text-lg text-gray-700">
                                                 @foreach($ingredients as $ingredient)
-                                                    <li>{{ $ingredient }}</li>
+                                                <li>
+                                                    <strong>{{ $ingredient->ingredient_name }}</strong>: {{ $ingredient->ingredient_description }}
+                                                </li>
                                                 @endforeach
                                             </ul>
                                         </div>
