@@ -16,11 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('blogs')" :active="request()->routeIs('blogs')">
+                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs')">
                         {{ __('Blogs') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('community')" :active="request()->routeIs('community')">
+                    <x-nav-link :href="route('community.index')" :active="request()->routeIs('community')">
                         {{ __('Community') }}
                     </x-nav-link>
 

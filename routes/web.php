@@ -23,13 +23,23 @@ Route::get('/aboutus', function () {
     return view('aboutus');
 })->name('aboutus');
 
-Route::get('/blogs', function () {
-    return view('blogs');
-})->name('blogs');
+use App\Http\Controllers\BlogController;
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
 
-Route::get('/community', function () {
-    return view('community');
-})->name('community');
+use App\Http\Controllers\CommunityController;
+Route::get('/community', [CommunityController::class, 'index'])->name('community.index');
+Route::post('/community', [CommunityController::class, 'store'])->name('community.store');
+Route::post('/reactions', [CommunityController::class, 'storeReaction'])->name('community.storeReaction');
+
+use App\Http\Controllers\TasksController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('tasks', [TasksController::class, 'index'])->name('tasks.index');
+    Route::post('tasks', [TasksController::class, 'store']);
+    Route::patch('tasks/{task}', [TasksController::class, 'markAsDone']);
+    Route::delete('tasks/{task}', [TasksController::class, 'destroy']);
+});
 
 Route::get('/products', function () {
     return view('products');
