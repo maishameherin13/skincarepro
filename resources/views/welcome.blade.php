@@ -84,7 +84,7 @@
 
       <div class="relative isolate px-6 pt-14 pb-14 lg:px-8 bg-indigo-700">
         <div class="text-center">
-            <h1 class="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Choose Your Treatment</h1>
+            <h1 class="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Choose Your Treatment</h1>
         </div>
     
         <div class="mt-10 flex justify-center gap-10 ">
@@ -110,7 +110,7 @@
       <style>
           .treatment-item {
               font-size: 1.25rem;
-              color: black;
+              color: white;
               background: none; /* Remove default button background */
               border: none; /* Remove default button border */
               text-decoration: none; /* No underline */
