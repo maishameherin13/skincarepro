@@ -13,7 +13,8 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         // Check if the user has completed the quiz
-        $result = Result::where('user_id', $user->id)->first();
+        $result = Result::where('user_id', $user->id)->latest()->first();
+
 
         // Pass the user's quiz status to the dashboard view
         if ($result) {

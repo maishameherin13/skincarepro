@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
-use App\Http\Controllers\ResultController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,9 +9,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz'); // Use 'show' method
+    Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
+});
 
 Route::get('/aboutus', function () {
     return view('aboutus');
@@ -29,18 +30,6 @@ Route::get('/community', function () {
 Route::get('/products', function () {
     return view('products');
 })->name('products');
-
-Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
-Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz');
-    Route::post('/quiz', [QuizController::class, 'store'])->name('quiz.store');
-});
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
