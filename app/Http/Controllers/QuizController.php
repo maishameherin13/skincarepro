@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
+    // Display the quiz page
+    public function show()
+    {
+        return view('quiz');
+    }
+
+    // Handle quiz submission
     public function submit(Request $request)
     {
         $data = $request->all();
@@ -14,17 +21,17 @@ class QuizController extends Controller
         // Logic to generate recommendations (use your existing method)
         $recommendations = $this->generateRecommendations($data);
 
-        // Save results to the database
+        // Save or update results to the database
         $result = Result::updateOrCreate(
             ['user_id' => Auth::id()], // If a result exists, update it
             [
                 'skin_type' => $recommendations['skin_type'],
-                'ingredients' => $recommendations['ingredients'],
-                'tips' => $recommendations['tips'],
+                'ingredients' => json_encode($recommendations['ingredients']), // Store as JSON
+                'tips' => json_encode($recommendations['tips']), // Store as JSON
             ]
         );
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Quiz submitted successfully!');
     }
 
     private function generateRecommendations($data)
