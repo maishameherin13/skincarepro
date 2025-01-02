@@ -5,25 +5,28 @@
                 {{ __('Dashboard') }}
             </h2>
         </div> --}}
-        <body class="flex items-center justify-center min-h-screen">
+        @if($result)
+            <body class="flex items-center justify-center min-h-screen">
             <div class="container mx-auto px-4 flex flex-col md:flex-row items-center bg-white-50">
              <div class="md:w-1/2 text-center md:text-left">
-              <h1 class="title text-4xl md:text-5xl lg:text-5xl font-bold text-indigo-900 leading-tight mb-4">
+              <h1 class="title text-4xl md:text-5xl lg:text-5xl font-bold text-pink-300 leading-tight mb-4">
                 {{ __('Your Skincare Recommendations') }}
               </h1>
               <p class="text-lg text-gray-700 mb-6">
                 Based on your quiz answers, we’ve created a personalized plan just for you.
               </p>
               <div class="flex justify-center md:justify-start space-x-4">
-               <button class="bg-indigo-900 text-white py-2 px-6 rounded-full">
-                SHOP NOW
-               </button>
+                <a href="{{ route('products') }}" class="inline-block">
+                    <button class="bg-pink-400 text-white py-2 px-6 rounded-full">
+                        SHOP NOW
+                    </button>
+                </a>
                <button class="border border-indigo-900 text-grey-900 py-2 px-6 rounded-full">
                 THE MAGIC BEHIND
                </button>
               </div>
               <div class="flex justify-center md:justify-start space-x-2 mt-6">
-               <span class="w-3 h-3 bg-indigo-900 rounded-full inline-block">
+               <span class="w-3 h-3 bg-pink-600 rounded-full inline-block">
                </span>
                <span class="w-3 h-3 bg-gray-300 rounded-full inline-block">
                </span>
@@ -36,18 +39,19 @@
              </div>
             </div>
         </body>
+    @endif
     </x-slot>
+    
     <div class="py-0 bg-gradient-to-b from-gray-50 to-white min-h-screen">
         <div class="max-w-6xl mx-auto px-0">
             <div class="bg-white overflow-hidden shadow-xl rounded-xl">
                 <div class="p-8 text-gray-900">
                     @if($result)
-
                         <!-- Recommendations Content -->
                         <div class="space-y-10">
                             <!-- Skin Type Section -->
                             <section>
-                                <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Your Skin Type</h3>
+                                <h3 class="text-2xl font-semibold text-pink-400 mb-4">Your Skin Type</h3>
                                 <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
                                     <p class="text-lg text-gray-700">{{ $result->skin_type }}</p>
                                 </div>
@@ -55,7 +59,7 @@
 
                             <!-- Recommended Ingredients Section -->
                             <section>
-                                <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Recommended Ingredients</h3>
+                                <h3 class="text-2xl font-semibold text-pink-400 mb-4">Recommended Ingredients</h3>
                                 <div class="space-y-4">
                                     @foreach($ingredients as $ingredient)
                                         <div class="ingredient-card p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
@@ -63,7 +67,7 @@
                                                 <span>{{ $ingredient->ingredient_name }}</span>
                                                 <span class="icon text-gray-500 text-xl">+</span>
                                             </button>
-                                            <div class="ingredient-content hidden mt-2 text-sm text-gray-600">
+                                            <div class="ingredient-content hidden mt-2 text-lg text-gray-600">
                                                 <p>{{ $ingredient->ingredient_description }}</p>
                                             </div>
                                         </div>
@@ -73,7 +77,7 @@
 
                             <!-- Skincare Tips Section -->
                             <section>
-                                <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Skincare Tips</h3>
+                                <h3 class="text-2xl font-semibold text-pink-400 mb-4">Skincare Tips</h3>
                                 <div class="space-y-4">
                                     @foreach($tips as $tip)
                                         <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
@@ -99,7 +103,7 @@
                         <!-- Retake Quiz Button -->
                         <div class="mt-12 text-center">
                             <a href="{{ route('quiz') }}" class="inline-block">
-                                <button class="rounded-full bg-indigo-800 px-6 py-3 text-lg font-semibold text-white shadow-md hover:bg-indigo-500 transition-all">
+                                <button class="rounded-full bg-pink-400 px-6 py-3 text-lg font-semibold text-white shadow-md hover:bg-indigo-500 transition-all">
                                     Retake Quiz
                                 </button>
                             </a>
