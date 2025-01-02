@@ -24,7 +24,7 @@ class QuizController extends Controller
             ]
         );
 
-        return redirect()->route('quiz.result', ['id' => Auth::id()]);
+        return redirect()->route('dashboard');
     }
 
     private function generateRecommendations($data)
