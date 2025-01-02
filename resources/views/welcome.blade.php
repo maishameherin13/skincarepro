@@ -74,7 +74,7 @@
               <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">WELCOME TO SKINCAREPRO</h1>
               <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">Personalized skincare solutions and your favorite products for every skintype and concerns in one place.</p>
               <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="{{ route('register') }}" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <a href="{{ route('register') }}" class="rounded-md bg-pink-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
                 <a href="{{ route('register') }}" class="text-sm/6 font-semibold text-gray-900">Learn more <span aria-hidden="true">→</span></a>
               </div>
             </div>
@@ -82,9 +82,9 @@
         </div>
       </div>
 
-      <div class="relative isolate px-6 pt-14 pb-14 lg:px-8 bg-indigo-700">
+      <div class="relative isolate px-6 pt-14 pb-14 lg:px-8 bg-pink-300">
         <div class="text-center">
-            <h1 class="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Choose Your Treatment</h1>
+            <h1 class="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Choose Your Treatment</h1>
         </div>
     
         <div class="mt-10 flex justify-center gap-10 ">
@@ -102,7 +102,7 @@
           </div>
       </div>
         <!-- Footer -->
-      <footer class=" text-gray-400 py-6 my-3">
+      <footer class=" text-gray-600 py-6 my-3">
         <div class="container mx-auto px-6 text-center">
           <p>© 2024 SkincarePro. All rights reserved.</p>
         </div>
@@ -110,7 +110,7 @@
       <style>
           .treatment-item {
               font-size: 1.25rem;
-              color: black;
+              color: white;
               background: none; /* Remove default button background */
               border: none; /* Remove default button border */
               text-decoration: none; /* No underline */
