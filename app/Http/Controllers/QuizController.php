@@ -46,38 +46,46 @@ class QuizController extends Controller
         $skinTypeMap = [
             'dry' => [
                 'skin_type' => 'Dry Skin',
-                'ingredients' => ['Hyaluronic Acid', 'Ceramides', 'Squalane'],
+                'ingredients' => ['Hyaluronic Acid', 'Ceramides', 'Squalane', 'Glycerin', 'Fatty Alcohols'],
                 'tips' => [
-                    'Use hydrating products like hyaluronic acid serums.',
-                    'Apply a rich, ceramide-based moisturizer.',
-                    'Avoid harsh cleansers that strip natural oils.'
+                    'Use hydrating products like hyaluronic acid serums to boost moisture levels.',
+                    'Apply a rich, ceramide-based moisturizer to lock in moisture.',
+                    'Avoid harsh cleansers that strip natural oils. Use gentle, creamy cleansers.',
+                    'Add facial oils (like Squalane) to prevent moisture loss during the day.',
+                    'Consider using a humidifier in your home during winter to maintain skin hydration.'
                 ]
             ],
             'oily' => [
                 'skin_type' => 'Oily Skin',
-                'ingredients' => ['Salicylic Acid', 'Niacinamide', 'Tea Tree Oil'],
+                'ingredients' => ['Salicylic Acid', 'Niacinamide', 'Tea Tree Oil', 'Retinol', 'Witch Hazel'],
                 'tips' => [
-                    'Use a salicylic acid cleanser to control oil production.',
-                    'Incorporate niacinamide to regulate sebum.',
-                    'Avoid heavy or occlusive moisturizers.'
+                    'Use a salicylic acid cleanser to deeply cleanse and control oil production.',
+                    'Incorporate niacinamide to regulate sebum and improve skin texture.',
+                    'Tea tree oil can help with acne and blemishes caused by excess oil.',
+                    'Avoid heavy, greasy moisturizers; opt for gel-based or non-comedogenic products.',
+                    'Exfoliate gently with AHA or BHA to prevent clogged pores and breakouts.'
                 ]
             ],
             'combination' => [
                 'skin_type' => 'Combination Skin',
-                'ingredients' => ['Vitamin C', 'Green Tea Extract', 'Aloe Vera'],
+                'ingredients' => ['Vitamin C', 'Green Tea Extract', 'Aloe Vera', 'Jojoba Oil', 'Benzoyl Peroxide'],
                 'tips' => [
-                    'Balance your routine with lightweight products for oily areas.',
-                    'Use Vitamin C for brightening and antioxidant protection.',
-                    'Apply gel-based moisturizers to hydrate without clogging pores.'
+                    'Balance your routine with lightweight products for oily areas, while using richer products for drier spots.',
+                    'Use Vitamin C for brightening and antioxidant protection on the entire face.',
+                    'Apply gel-based moisturizers to hydrate without clogging pores, focusing on the T-zone.',
+                    'Avoid harsh exfoliants that may irritate the drier areas of your face.',
+                    'Spot treat breakouts with benzoyl peroxide or salicylic acid.'
                 ]
             ],
             'sensitive' => [
                 'skin_type' => 'Sensitive Skin',
-                'ingredients' => ['Centella Asiatica', 'Chamomile', 'Oat Extract'],
+                'ingredients' => ['Centella Asiatica', 'Chamomile', 'Oat Extract', 'Licorice Extract', 'Zinc Oxide'],
                 'tips' => [
-                    'Stick to fragrance-free and hypoallergenic products.',
-                    'Use soothing ingredients like Centella Asiatica.',
-                    'Avoid physical exfoliants and harsh active ingredients.'
+                    'Stick to fragrance-free and hypoallergenic products that won\'t cause irritation.',
+                    'Use soothing ingredients like Centella Asiatica, Chamomile, and Aloe Vera to calm redness.',
+                    'Avoid physical exfoliants and harsh active ingredients like acids or retinoids.',
+                    'Licorice extract can brighten the skin and calm redness without irritation.',
+                    'Use zinc oxide-based sunscreens for gentle, broad-spectrum sun protection.'
                 ]
             ],
         ];
@@ -91,58 +99,51 @@ class QuizController extends Controller
     
         // Acne-prone skin
         if ($data['acne'] === 'frequently') {
-            $recommendations['tips'][] = 'Focus on acne-fighting ingredients like salicylic acid and tea tree oil.';
+            $recommendations['tips'][] = 'Focus on acne-fighting ingredients like salicylic acid, tea tree oil, and benzoyl peroxide.';
             $recommendations['ingredients'][] = 'Salicylic Acid';
             $recommendations['ingredients'][] = 'Tea Tree Oil';
+            $recommendations['ingredients'][] = 'Benzoyl Peroxide';
         }
     
         // Redness or irritation
         if ($data['redness'] === 'yes') {
-            $recommendations['tips'][] = 'Reduce redness with soothing ingredients like Centella Asiatica and Green Tea Extract.';
+            $recommendations['tips'][] = 'Reduce redness with soothing ingredients like Centella Asiatica, Green Tea Extract, and Chamomile.';
             $recommendations['ingredients'][] = 'Centella Asiatica';
             $recommendations['ingredients'][] = 'Green Tea Extract';
+            $recommendations['ingredients'][] = 'Chamomile';
         }
     
         // Hyperpigmentation or dark spots
         if ($data['dark_spots'] !== 'no') {
-            $recommendations['tips'][] = 'Use brightening ingredients like Vitamin C and Niacinamide to target dark spots.';
+            $recommendations['tips'][] = 'Use brightening ingredients like Vitamin C, Niacinamide, Licorice Extract, and Alpha Arbutin to target dark spots.';
             $recommendations['ingredients'][] = 'Vitamin C';
             $recommendations['ingredients'][] = 'Niacinamide';
+            $recommendations['ingredients'][] = 'Licorice Extract';
+            $recommendations['ingredients'][] = 'Alpha Arbutin';
         }
     
         // Dull skin or uneven tone
         if ($data['dullness'] === 'yes') {
-            $recommendations['tips'][] = 'Incorporate AHAs or BHAs to exfoliate and brighten the skin.';
+            $recommendations['tips'][] = 'Incorporate AHAs or BHAs to exfoliate, brighten, and smooth the skin\'s texture.';
             $recommendations['ingredients'][] = 'AHA';
             $recommendations['ingredients'][] = 'BHA';
+            $recommendations['ingredients'][] = 'Lactic Acid';
         }
     
         // Fine lines, wrinkles, or anti-aging
         if ($data['wrinkles'] !== 'no') {
-            $recommendations['tips'][] = 'Incorporate anti-aging ingredients like retinoids and peptides to target wrinkles.';
+            $recommendations['tips'][] = 'Incorporate anti-aging ingredients like Retinoids, Peptides, and Vitamin A to target wrinkles and improve skin elasticity.';
             $recommendations['ingredients'][] = 'Retinoids';
             $recommendations['ingredients'][] = 'Peptides';
+            $recommendations['ingredients'][] = 'Vitamin A';
         }
     
-        // // Seasonal impacts: Winter
-        // if ($data['climate'] === 'cold_and_dry' || $data['climate'] === 'moderate') {
-        //     $recommendations['tips'][] = 'Use thicker moisturizers during colder months.';
-        //     $recommendations['ingredients'][] = 'Shea Butter';
-        //     $recommendations['ingredients'][] = 'Urea';
-        // }
-    
-        // // Seasonal impacts: Summer
-        // if ($data['climate'] === 'hot_and_humid') {
-        //     $recommendations['tips'][] = 'Switch to gel-based moisturizers and lightweight sunscreens during summer.';
-        //     $recommendations['ingredients'][] = 'Zinc Oxide';
-        //     $recommendations['ingredients'][] = 'Kaolin Clay';
-        // }
-    
         // Large pores
-        if ($data['large_pores'] ?? false) { // Check if large_pores field exists
-            $recommendations['tips'][] = 'Use niacinamide to reduce the appearance of large pores.';
+        if ($data['large_pores'] ?? false) {
+            $recommendations['tips'][] = 'Use niacinamide to regulate oil production and minimize the appearance of pores, and consider clay masks for deep cleansing.';
             $recommendations['ingredients'][] = 'Niacinamide';
             $recommendations['ingredients'][] = 'Witch Hazel';
+            $recommendations['ingredients'][] = 'Kaolin Clay';
         }
     
         // Combine all recommendations and remove duplicates
