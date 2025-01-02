@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,13 +30,16 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/quiz', function () {
-    return view('quiz');
-})->name('quiz');
-
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
 Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/quiz/result/{id}', [ResultController::class, 'show'])->name('quiz.result');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz');
+    Route::post('/quiz', [QuizController::class, 'store'])->name('quiz.store');
+});
+
 
 
 Route::middleware('auth')->group(function () {
