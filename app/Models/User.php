@@ -49,9 +49,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Result::class);
     }
+
     public function tasks()
     {
         return $this->hasMany(Tasks::class);
+    }
+    public function reactions()
+    {
+    return $this->hasMany(Reaction::class);
     }
 
 }
