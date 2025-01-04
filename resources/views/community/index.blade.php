@@ -1,10 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Share your thoughts and reviews with the community!') }}
-        </h2>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body class="bg-gray-100">
     <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        
+        <h1 class="text-3xl font-bold text-center text-gray-800">Community Page</h1>
+        <p class="text-center text-gray-600 mt-2">Share your thoughts and reviews with the community!</p>
 
         <div class="mt-6">
             <h3 class="text-2xl font-semibold text-gray-800">Comments</h3>
