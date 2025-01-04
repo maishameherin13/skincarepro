@@ -21,13 +21,19 @@
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
             <!-- Page Header -->
             <div class="mx-auto max-w-2xl lg:mx-0 text-left">
                 <h2 class="text-6xl font-semibold tracking-tight text-gray-900 sm:text-5xl">From the Blog</h2>
                 <p class="mt-4 text-lg leading-8 text-gray-600">Discover insightful content and grow your knowledge with our expert advice.</p>
             </div>
+<<<<<<< Updated upstream
 =======
             
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
             <!-- Blog Grid -->
