@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-=======
 <x-app-layout>
     <x-slot name="header">
         
@@ -15,26 +5,15 @@
             {{ __('From The Blog:') }}
         </h2>
     
->>>>>>> Stashed changes
 <body class="bg-gray-100">
     <!-- Main Container -->
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
             <!-- Page Header -->
             <div class="mx-auto max-w-2xl lg:mx-0 text-left">
                 <h2 class="text-6xl font-semibold tracking-tight text-gray-900 sm:text-5xl">From the Blog</h2>
                 <p class="mt-4 text-lg leading-8 text-gray-600">Discover insightful content and grow your knowledge with our expert advice.</p>
             </div>
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
             <!-- Blog Grid -->
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-16">
@@ -69,10 +48,6 @@
         </div>
     </div>
 </body>
-<<<<<<< Updated upstream
-</html>
-=======
 </x-slot> 
     
 </x-app-layout>
->>>>>>> Stashed changes
