@@ -49,6 +49,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Result::class);
     }
+
     public function tasks()
     {
         return $this->hasMany(Tasks::class);
@@ -56,6 +57,9 @@ class User extends Authenticatable
     public function admin()
     {
         return $this->hasOne(Admin::class);
+    public function reactions()
+    {
+    return $this->hasMany(Reaction::class);
     }
 
 }

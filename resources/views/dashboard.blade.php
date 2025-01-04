@@ -21,9 +21,12 @@
                         SHOP NOW
                     </button>
                 </a>
-               <button class="border border-indigo-900 text-grey-900 py-2 px-6 rounded-full">
-                THE MAGIC BEHIND
-               </button>
+                <a href="{{ route('tasks.index') }}" class="inline-block">
+                    <button class="bg-pink-400 text-white py-2 px-6 rounded-full">
+                        Create Your To-Do list
+                       </button>
+                </a>
+               
               </div>
               <div class="flex justify-center md:justify-start space-x-2 mt-6">
                <span class="w-3 h-3 bg-pink-600 rounded-full inline-block">
