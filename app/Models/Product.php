@@ -30,6 +30,7 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'product_id', 'id'); // Ensure the foreign key is 'product_id'
     }
+
     public function ratings()
 {
     return $this->hasMany(Rating::class);
@@ -42,5 +43,6 @@ public function users()
 {
     return $this->belongsToMany(User::class, 'favorites');
 }
+
 }
 
