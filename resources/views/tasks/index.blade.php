@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    
 <body class="bg-gray-100 text-gray-800">
 
     <div class="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
@@ -61,5 +61,5 @@
 
 </body>
 </x-slot>
-  
+
 </x-app-layout>
