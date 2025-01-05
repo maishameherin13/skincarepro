@@ -29,6 +29,11 @@
                     </x-nav-link>
                     <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
                         {{ __('Cart') }}
+
+                    </x-nav-link>
+                    <x-nav-link :href="route('reviews.create')" :active="request()->routeIs('cart.index')">
+                        {{ __('Review') }}
+                    </x-nav-link>
                     </x-nav-link>
                 </div>
             </div>
