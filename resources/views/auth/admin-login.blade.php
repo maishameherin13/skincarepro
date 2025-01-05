@@ -1,8 +1,10 @@
+<!-- resources/views/auth/admin-login.blade.php -->
+
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('admin.login') }}">
         @csrf
 
         <!-- Email Address -->
@@ -40,11 +42,6 @@
             @endif
 
             <div class="flex items-center">
-                <!-- Admin Login Link -->
-                <a href="{{ route('admin.login') }}" class="underline text-sm text-blue-500 hover:text-blue-700 mx-2">
-                    {{ __('Admin Login') }}
-                </a>
-
                 <x-primary-button class="ms-3">
                     {{ __('Log in') }}
                 </x-primary-button>

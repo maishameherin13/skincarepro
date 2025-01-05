@@ -125,3 +125,11 @@ INSERT INTO ingredients (ingredient_name, ingredient_description) VALUES
 ('BHA (Beta Hydroxy Acid)', 'BHA, or Beta Hydroxy Acid, is a type of exfoliating acid that penetrates deep into the pores to remove dead skin cells and excess oil. It is particularly effective for acne-prone skin, as it helps clear out clogged pores and prevent breakouts. BHA also has anti-inflammatory properties and can improve skin texture and tone.'),
 ('AHA (Alpha Hydroxy Acid)', 'AHA, or Alpha Hydroxy Acid, is a water-soluble exfoliating acid that helps remove dead skin cells from the skin’s surface. It helps brighten the complexion, improve skin texture, and reduce the appearance of fine lines and wrinkles. AHAs are typically used for normal to dry skin types and are great for boosting skin radiance.'),
 ('Retinoids', 'Retinoids are derivatives of Vitamin A known for their powerful anti-aging and acne-fighting properties. They help speed up cell turnover, reducing the appearance of fine lines, wrinkles, and acne scars. Retinoids are commonly used to improve skin texture and tone, but they can make the skin more sensitive to sunlight. Use them at night for best results.');
+
+
+--for admin table--:
+
+insert into admins (name, email, password) values ('admin', 'admin@admin.com', '$2y$12$S1.R.e7v44qDchCzCN/tHeVwmQTqv5b53XIoS2
+KtHg1UjI4f4Hcuu');
+
+#the password associated to the hash: adminadmin
