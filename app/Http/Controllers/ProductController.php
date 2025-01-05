@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Product; // Assuming you have a Product model
@@ -8,148 +7,56 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-    /**
-     * Display a listing of products.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
     public function index(Request $request)
     {
-        $search = $request->input('search'); // Retrieve the search query
-    
-        $products = Product::query();
+        $search = $request->input('search');
+        $productsQuery = Product::query();
 
         if ($search) {
-            $products->where('product_name', 'like', '%' . $search . '%');
+            $productsQuery->where('product_name', 'like', '%' . $search . '%');
         }
 
-        $products = $products->get();
-
+        $products = $productsQuery->get();
         return view('products', compact('products'));
     }
-
-    /**
-     * Show a specific product by ID.
-     *
-     * @param int $product_id
-     * @return \Illuminate\Http\Response
-     */
-
-    // Method to fetch all products and pass them to the view
-    public function index()
-    {
-        // Retrieve all products from the database
-        $products = Product::all();
-
-        // Pass the products data to the products view
-        return view('products', compact('products'));
-    }
-    
 
     public function show($product_id)
     {
-        // Retrieve the product by its ID
         $product = Product::findOrFail($product_id);
-
-
-        // Calculate the average rating for the product
-        $averageRating = $product->ratings()->avg('rating');
-
-        return view('product_details', compact('product', 'averageRating'));
-    }
-
-    /**
-     * Display the product image.
-     *
-     * @param int $product_id
-     * @return \Illuminate\Http\Response
-     */
-    public function showImage($product_id)
-    {
-        // Retrieve the product by its ID
-        $product = Product::findOrFail($product_id);
-
-        // Get the image data (BLOB) from the database
         $imageData = $product->product_image;
-
-        // Determine the MIME type
         $imageInfo = getimagesizefromstring($imageData);
         $mimeType = $imageInfo['mime'];
 
-        return response($imageData)
-            ->header('Content-Type', $mimeType);
+        return response($imageData)->header('Content-Type', $mimeType);
     }
 
-    /**
-     * Add a product to the cart.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $product_id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function addToCart(Request $request, $product_id)
-    {
-        // Logic for adding the product to the cart
-        // For example, saving the product ID to the session or database
-
-        // Example response
-        return response()->json(['success' => true, 'message' => 'Product added to cart']);
-    }
-    
-    
     public function addToFavorites($product_id)
     {
-        $product = Product::where('product_id', $product_id)->first();
+        $product = Product::find($product_id);
 
         if (!$product) {
             return response()->json(['success' => false, 'message' => 'Product not found']);
         }
 
-        //Add product to the session(favourite)
         $favorites = session()->get('favorites', []);
-        //check if the product is already in the favorites
-        if (isset($favorites[$product_id])) {
-            $favorites[$product_id]['quantity']++;
-        } else {
+
+        if (!isset($favorites[$product_id])) {
             $favorites[$product_id] = [
                 'name' => $product->product_name,
                 'price' => $product->product_price,
-                'image' => $product->product_image,
+                
             ];
+            session()->put('favorites', $favorites);
+
+            return response()->json(['success' => true, 'message' => 'Product added to favorites']);
         }
-        session()->put('favorites', $favorites);
-        return response()->json(['success' => true, 'message' => 'Product added to Favourites']);
+
+        return response()->json(['success' => true, 'message' => 'Product is already in favorites']);
     }
-    /**
-     * Display the list of favorite products.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function showFavorites()
     {
-        // Get the favorite products from the session
         $favorites = session()->get('favorites', []);
-
         return view('favorites', compact('favorites'));
     }
-
-
-    
-        // Get the image data (BLOB) from the database
-        $imageData = $product->product_image;
-    
-        // // Return the image as a response with the appropriate content type
-        // return response($imageData)
-        //     ->header('Content-Type', 'image/jpeg'); // Or the appropriate mime type for your images
-    
-        $imageInfo = getimagesizefromstring($imageData);
-        $mimeType = $imageInfo['mime'];
-        
-        return response($imageData)
-            ->header('Content-Type', $mimeType);
-    }
-  
-
 }

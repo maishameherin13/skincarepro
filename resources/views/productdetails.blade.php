@@ -86,7 +86,6 @@
           resize: vertical;
       }
 
-
       .review-section form button {
           background-color: #3f51b5;
           color: #fff;
@@ -161,40 +160,6 @@
           background-color: #3f51b5;
           color: #fff;
       }
-
-      .review-section form .rating {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 15px;
-      }
-
-      .review-section form .rating label {
-          font-size: 1.25rem;
-      }
-
-      .review-section form .rating input {
-          width: 20px;
-          height: 20px;
-          cursor: pointer;
-      }
-
-      .review-section form button {
-          background-color: #3f51b5;
-          color: #fff;
-          padding: 12px 20px;
-          border-radius: 5px;
-          font-weight: bold;
-          cursor: pointer;
-          border: none;
-          display: block;
-          margin: 0 auto;
-      }
-
-      .review-section form button:hover {
-          background-color: #303f9f;
-      }
-
   </style>
 
   <main>
@@ -221,7 +186,6 @@
               <!-- Buttons -->
               <button id="buyButton" class="buy-button" data-product-id="{{ $product->product_id }}">Add to cart</button>
 
-
               <!-- Favorite Button -->
               <button id="favoriteButton" class="favorite-button" data-product-id="{{ $product->product_id }}">
                   <i class="fas fa-heart"></i> Add to favorites
@@ -229,10 +193,7 @@
           </div>
       </div>
 
-      <!-- Rating Button -->
-      <a href="{{ route('product.rate', $product->product_id) }}">
-          <button id="ratingButton" class="rating-button">Rate this product</button>
-      </a>
+      
   </main>
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -240,22 +201,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         const buyButton = document.getElementById('buyButton');
-        const favoriteButton = document.getElementById('favoriteButton');
-        const ratingButton = document.getElementById('ratingButton');
-
-        // Add to cart button logi
-        </div>
-      </div>
-  </main>
-
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-</x-app-layout>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const buyButton = document.getElementById('buyButton');
         const favoriteButton = document.getElementByID('favoriteButton')
 
+        // Add to cart button logic
         if (buyButton) {
             buyButton.addEventListener('click', function () {
                 const productId = buyButton.dataset.productId;
@@ -313,5 +261,3 @@
     });
   </script>
 </x-app-layout>
-
-

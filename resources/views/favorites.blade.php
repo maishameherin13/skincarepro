@@ -11,8 +11,7 @@
                 @foreach($favorites as $product_id => $product)
                     <div class="col-md-4 col-sm-6 mb-4">
                         <div class="card">
-                            <!-- Product Image -->
-                            <img src="data:image/jpeg;base64,{{ base64_encode($product['image']) }}" class="card-img-top" alt="Product Image">
+                            
                             <div class="card-body">
                                 <!-- Product Name -->
                                 <h5 class="card-title">{{ $product['name'] }}</h5>
