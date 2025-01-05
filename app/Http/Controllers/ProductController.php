@@ -1,41 +1,62 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Product; // Assuming you have a Product model
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // Method to fetch all products and pass them to the view
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all products from the database
-        $products = Product::all();
+        $search = $request->input('search');
+        $productsQuery = Product::query();
 
-        // Pass the products data to the products view
+        if ($search) {
+            $productsQuery->where('product_name', 'like', '%' . $search . '%');
+        }
+
+        $products = $productsQuery->get();
         return view('products', compact('products'));
     }
-    
+
     public function show($product_id)
     {
-        // Retrieve the product by its ID
         $product = Product::findOrFail($product_id);
-    
-        // Get the image data (BLOB) from the database
         $imageData = $product->product_image;
-    
-        // // Return the image as a response with the appropriate content type
-        // return response($imageData)
-        //     ->header('Content-Type', 'image/jpeg'); // Or the appropriate mime type for your images
-    
         $imageInfo = getimagesizefromstring($imageData);
         $mimeType = $imageInfo['mime'];
-        
-        return response($imageData)
-            ->header('Content-Type', $mimeType);
+
+        return response($imageData)->header('Content-Type', $mimeType);
     }
-  
 
+    public function addToFavorites($product_id)
+    {
+        $product = Product::find($product_id);
 
+        if (!$product) {
+            return response()->json(['success' => false, 'message' => 'Product not found']);
+        }
+
+        $favorites = session()->get('favorites', []);
+
+        if (!isset($favorites[$product_id])) {
+            $favorites[$product_id] = [
+                'name' => $product->product_name,
+                'price' => $product->product_price,
+                
+            ];
+            session()->put('favorites', $favorites);
+
+            return response()->json(['success' => true, 'message' => 'Product added to favorites']);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Product is already in favorites']);
+    }
+
+    public function showFavorites()
+    {
+        $favorites = session()->get('favorites', []);
+        return view('favorites', compact('favorites'));
+    }
 }

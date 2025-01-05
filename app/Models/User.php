@@ -45,6 +45,12 @@ class User extends Authenticatable
         ];
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+
     public function result()
     {
         return $this->hasOne(Result::class);
@@ -62,5 +68,6 @@ class User extends Authenticatable
     {
     return $this->hasMany(Reaction::class);
     }
+
 
 }
