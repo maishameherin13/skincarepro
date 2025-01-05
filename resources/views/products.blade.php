@@ -88,9 +88,56 @@
       .button:hover {
           background-color: #303f9f;
       }
+        /* Search bar styles */
+        .search-bar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 30px;
+      }
+
+      .search-bar input {
+          width: 60%;
+          padding: 12px 15px;
+          font-size: 1.1rem;
+          border: 2px solid #ccc;
+          border-right: none;
+          border-radius: 8px 0 0 8px;
+          outline: none;
+          transition: all 0.3s;
+      }
+
+      .search-bar input:focus {
+          border-color: #3f51b5;
+          box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+      }
+
+      .search-bar button {
+          padding: 12px 20px;
+          font-size: 1.1rem;
+          border: none;
+          background-color: #3f51b5;
+          color: #fff;
+          border-radius: 0 8px 8px 0;
+          cursor: pointer;
+          transition: all 0.3s;
+      }
+
+      .search-bar button:hover {
+          background-color: #303f9f;
+      }
   </style>
 
   <main>
+        <!-- Search bar -->
+        
+        <div class="search-bar">
+            <form method="GET" action="{{ route('products') }}">
+                <input type="text" name="search" placeholder="Search for products..." value="{{ request('search') }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
       <div class="product-grid">
           @foreach($products as $product)
               <div class="product-card">

@@ -35,6 +35,9 @@
                         {{ __('Cart') }}
 
                     </x-nav-link>
+                    <x-nav-link :href="route('reviews.create')" :active="request()->routeIs('cart.index')">
+                        {{ __('Review') }}
+                    </x-nav-link>
                     
                     <x-nav-link :href="route('favorites')" :active="request()->routeIs('favorites')">
                         {{ __('Favorites') }}
