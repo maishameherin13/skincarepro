@@ -8,14 +8,26 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Auth\AdminAuthenticatedSessionController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Admin Login Routes
+Route::get('admin/login', [AdminAuthenticatedSessionController::class, 'create'])->name('admin.login');
+Route::post('admin/login', [AdminAuthenticatedSessionController::class, 'store']);
+Route::post('admin/logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+
+// Admin Dashboard Route
+Route::middleware('auth:admin')->get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz'); // Use 'show' method
+    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz');
     Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
 });
 
@@ -50,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::post('/product/{product_id}/add-to-favorites', [ProductController::class, 'addToFavorites'])->name('product.addToFavorites');
 Route::get('/favorites', [ProductController::class, 'showFavorites'])->name('favorites');
 
@@ -57,14 +70,10 @@ Route::get('/reviews', [ReviewController::class, 'showReviewForm'])->name('revie
 Route::post('/reviews', [ReviewController::class, 'storeReview'])->name('reviews.store');
 Route::post('/reviews/{review}/like', [ReviewController::class, 'like'])->name('reviews.like');
 Route::post('/reviews/{review}/dislike', [ReviewController::class, 'dislike'])->name('reviews.dislike');
-    
-
-
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 Route::get('/product/{product_id}', function($product_id) {
-    // Fetch the product by ID using the query builder
     $product = DB::table('products')->where('product_id', $product_id)->first();
 
     if (!$product) {
@@ -81,17 +90,16 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::post('/cart/update/{product_id}', [CartController::class, 'updateQuantity'])->name('cart.update');
 Route::delete('/cart/remove/{product_id}', [CartController::class, 'removeItem'])->name('cart.remove');
 
-
 Route::get('/cart/checkout', function () {
     return view('cart.checkout');
 })->name('checkout');
 
 Route::post('/cart/checkout/complete', function () {
     session()->flash('success', 'Your Purchase is complete!');
-    return redirect()->route('checkout'); // Redirect back to the checkout page
+    return redirect()->route('checkout');
 })->name('checkout.complete');
 
 Route::get('/product/{id}/image', [ProductController::class, 'show'])->name('product.image');
 
-
+// Require the authentication routes (login, register, etc.)
 require __DIR__.'/auth.php';
