@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('welcome');
