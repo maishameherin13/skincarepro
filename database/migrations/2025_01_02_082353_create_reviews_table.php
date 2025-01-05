@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('product_name');
             $table->text('review');
+            $table->integer('likes')->default(0); // Adding likes column
+            $table->integer('dislikes')->default(0); // Adding dislikes column
             $table->timestamps();
 
             // Adding the foreign key constraint
