@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-   
     use HasFactory, Notifiable;
 
     /**
@@ -37,19 +36,15 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
+    // Existing relationships
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
-
 
     public function result()
     {
@@ -60,14 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tasks::class);
     }
-    public function admin()
-    {
-        return $this->hasOne(Admin::class);
-    }
+
     public function reactions()
     {
-    return $this->hasMany(Reaction::class);
+        return $this->hasMany(Reaction::class);
     }
-
-
 }

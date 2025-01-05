@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->id(); // Primary Key
+            $table->string('name'); // Admin's name
+            $table->string('email')->unique(); // Unique email
+            $table->timestamp('email_verified_at')->nullable(); // For email verification
+            $table->string('password'); // Hashed password
+            $table->string('remember_token', 100)->nullable(); // "Remember Me" token
+            $table->timestamps(); // created_at and updated_at
         });
     }
 
