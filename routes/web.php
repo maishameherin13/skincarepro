@@ -50,6 +50,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::post('/product/{product_id}/add-to-favorites', [ProductController::class, 'addToFavorites'])->name('product.addToFavorites');
+Route::get('/favorites', [ProductController::class, 'showFavorites'])->name('favorites');
+
+Route::get('/reviews', [ReviewController::class, 'showReviewForm'])->name('reviews.create');
+Route::post('/reviews', [ReviewController::class, 'storeReview'])->name('reviews.store');
+Route::post('/reviews/{review}/like', [ReviewController::class, 'like'])->name('reviews.like');
+Route::post('/reviews/{review}/dislike', [ReviewController::class, 'dislike'])->name('reviews.dislike');
+    
+
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');

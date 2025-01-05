@@ -86,23 +86,6 @@
           resize: vertical;
       }
 
-      .review-section form .rating {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 15px;
-      }
-
-      .review-section form .rating label {
-          font-size: 1.25rem;
-      }
-
-      .review-section form .rating input {
-          width: 20px;
-          height: 20px;
-          cursor: pointer;
-      }
-
       .review-section form button {
           background-color: #3f51b5;
           color: #fff;
@@ -117,6 +100,65 @@
 
       .review-section form button:hover {
           background-color: #303f9f;
+      }
+
+      /* Rating Section */
+      .rating-form {
+          margin-top: 30px;
+          padding: 15px;
+          background-color: #f1f1f1;
+          border-radius: 10px;
+          text-align: center;
+      }
+
+      .rating-form label {
+          font-size: 1.25rem;
+          margin-right: 10px;
+      }
+
+      .rating-form select {
+          padding: 5px;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+
+      .rating-button {
+          padding: 10px 20px;
+          background-color: #3f51b5;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 1rem;
+          margin-bottom: 20px;
+      }
+
+      .rating-button:hover {
+          background-color: #303f9f;
+      }
+
+      /* Favorite Button Styling */
+      .favorite-button {
+          padding: 10px 20px;
+          background-color: transparent;
+          border: 2px solid #3f51b5;
+          color: #3f51b5;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 1rem;
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+      }
+
+      .favorite-button i {
+          margin-right: 5px;
+      }
+
+      .favorite-button:hover {
+          background-color: #3f51b5;
+          color: #fff;
       }
   </style>
 
@@ -143,17 +185,25 @@
 
               <!-- Buttons -->
               <button id="buyButton" class="buy-button" data-product-id="{{ $product->product_id }}">Add to cart</button>
+
+              <!-- Favorite Button -->
+              <button id="favoriteButton" class="favorite-button" data-product-id="{{ $product->product_id }}">
+                  <i class="fas fa-heart"></i> Add to favorites
+              </button>
           </div>
       </div>
+
+      
   </main>
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
-</x-app-layout>
 
-<script>
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
         const buyButton = document.getElementById('buyButton');
+        const favoriteButton = document.getElementByID('favoriteButton')
 
+        // Add to cart button logic
         if (buyButton) {
             buyButton.addEventListener('click', function () {
                 const productId = buyButton.dataset.productId;
@@ -180,5 +230,34 @@
                 });
             });
         }
+
+        // Favorite button logic
+        if (favoriteButton) {
+            favoriteButton.addEventListener('click', function () {
+                const productId = favoriteButton.dataset.productId;
+
+                fetch(`/product/${productId}/add-to-favorites`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    },
+                    body: JSON.stringify({ product_id: productId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Product added to favorites successfully!');
+                    } else {
+                        alert('Failed to add product to favorites. ' + (data.message || 'Please try again.'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            });
+        }
     });
-</script>
+  </script>
+</x-app-layout>
