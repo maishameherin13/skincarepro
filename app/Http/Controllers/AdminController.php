@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Product; // Added to manage products
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -64,5 +65,15 @@ class AdminController extends Controller
 
         // Redirect with a success message
         return redirect()->route('admin.manageAdmins')->with('status', 'Admin removed successfully!');
+    }
+
+    // Manage Products Page (new method)
+    public function manageProducts()
+    {
+        // Fetch all products from the database
+        $products = Product::all(); 
+
+        // Return the view with all products
+        return view('admin.manageProducts', compact('products'));
     }
 }

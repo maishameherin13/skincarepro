@@ -37,7 +37,11 @@ Route::middleware('auth:admin')->group(function () {
     // Remove Admin (List and remove admins)
     Route::get('/admin/removeAdmin', [AdminController::class, 'removeAdmin'])->name('admin.removeAdmin');
     Route::delete('/admin/removeAdmin/{adminId}', [AdminController::class, 'removeAdminSubmit'])->name('admin.removeAdminSubmit');
+
+    // Manage Products Page
+    Route::get('/admin/manageProducts', [AdminController::class, 'manageProducts'])->name('admin.manageProducts');
 });
+
 
 // Other Routes (Leaving other routes untouched as you provided them)
 Route::middleware(['auth', 'verified'])->group(function () {

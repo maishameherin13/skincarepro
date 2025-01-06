@@ -15,9 +15,9 @@
             <a href="{{ route('admin.manageAdmins') }}" class="bg-blue-500 text-white p-4 rounded hover:bg-blue-600 transition">
                 Manage Admins
             </a>
-            <button class="bg-green-500 text-white p-4 rounded hover:bg-green-600 transition">
+            <a href="{{ route('admin.manageProducts') }}" class="bg-green-500 text-white p-4 rounded hover:bg-green-600 transition"> <!-- Updated href -->
                 Manage Products
-            </button>
+            </a>
         </div>
     </div>
 @endsection
