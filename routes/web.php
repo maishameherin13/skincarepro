@@ -27,15 +27,16 @@ Route::middleware('auth:admin')->get('/admin/dashboard', function () {
 
 // Admin Manage Admins Routes
 Route::middleware('auth:admin')->group(function () {
-    // Manage Admins (main page with add/remove buttons)
+    // Manage Admins (Main Page)
     Route::get('/admin/manageAdmins', [AdminController::class, 'manageAdmins'])->name('admin.manageAdmins');
-    // Add Admin
+    
+    // Add Admin (Form)
     Route::get('/admin/addAdmin', [AdminController::class, 'addAdmin'])->name('admin.addAdmin');
-    // Remove Admin
+    Route::post('/admin/add-admin', [AdminController::class, 'storeAdmin'])->name('admin.store');  // Store New Admin
+
+    // Remove Admin (Handling admin removal, needs logic)
     Route::get('/admin/removeAdmin', [AdminController::class, 'removeAdmin'])->name('admin.removeAdmin');
 });
-
-Route::post('admin/logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
 // Other Routes (Leaving other routes untouched as you provided them)
 Route::middleware(['auth', 'verified'])->group(function () {

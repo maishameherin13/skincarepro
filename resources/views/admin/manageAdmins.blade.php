@@ -7,16 +7,19 @@
         </div>
 
         <div class="mt-6 text-gray-500">
-            
         </div>
-        
-        <!-- Buttons to Add/Remove Admins -->
+
+        <!-- Display success message if any -->
+        @if(session('status'))
+            <div class="mt-6 text-green-500">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <div class="flex mt-6 space-x-4">
+            <!-- Link to the Add Admin form -->
             <a href="{{ route('admin.addAdmin') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
                 Add Admin
-            </a>
-            <a href="{{ route('admin.removeAdmin') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
-                Remove Admin
             </a>
         </div>
     </div>
