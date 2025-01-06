@@ -10,11 +10,11 @@
     
         </div>
         
-        <!-- Placeholder buttons (does nothing for now) -->
+        <!-- Updated buttons -->
         <div class="flex mt-6 space-x-4">
-            <button class="bg-blue-500 text-white p-4 rounded hover:bg-blue-600 transition">
+            <a href="{{ route('admin.manageAdmins') }}" class="bg-blue-500 text-white p-4 rounded hover:bg-blue-600 transition">
                 Manage Admins
-            </button>
+            </a>
             <button class="bg-green-500 text-white p-4 rounded hover:bg-green-600 transition">
                 Manage Products
             </button>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\AdminAuthenticatedSessionController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,10 +25,21 @@ Route::middleware('auth:admin')->get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::post('admin/logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+// Admin Manage Admins Routes
+Route::middleware('auth:admin')->group(function () {
+    // Manage Admins (Main Page)
+    Route::get('/admin/manageAdmins', [AdminController::class, 'manageAdmins'])->name('admin.manageAdmins');
 
+    // Add Admin (Form)
+    Route::get('/admin/addAdmin', [AdminController::class, 'addAdmin'])->name('admin.addAdmin');
+    Route::post('/admin/add-admin', [AdminController::class, 'storeAdmin'])->name('admin.store');  // Store New Admin
 
+    // Remove Admin (List and remove admins)
+    Route::get('/admin/removeAdmin', [AdminController::class, 'removeAdmin'])->name('admin.removeAdmin');
+    Route::delete('/admin/removeAdmin/{adminId}', [AdminController::class, 'removeAdminSubmit'])->name('admin.removeAdminSubmit');
+});
 
+// Other Routes (Leaving other routes untouched as you provided them)
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/quiz', [QuizController::class, 'show'])->name('quiz');
@@ -48,7 +60,6 @@ Route::post('/community', [CommunityController::class, 'store'])->name('communit
 Route::post('/reactions', [CommunityController::class, 'storeReaction'])->name('community.storeReaction');
 
 use App\Http\Controllers\TasksController;
-
 Route::middleware(['auth'])->group(function () {
     Route::get('tasks', [TasksController::class, 'index'])->name('tasks.index');
     Route::post('tasks', [TasksController::class, 'store']);
