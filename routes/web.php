@@ -40,6 +40,10 @@ Route::middleware('auth:admin')->group(function () {
 
     // Manage Products Page
     Route::get('/admin/manageProducts', [AdminController::class, 'manageProducts'])->name('admin.manageProducts');
+    
+    // Product Edit Routes (Edit and Update a Product)
+    Route::get('/admin/editProduct/{productId}', [ProductController::class, 'editProduct'])->name('admin.editProduct'); // Edit Product Form
+    Route::post('/admin/editProduct/{productId}', [ProductController::class, 'updateProduct'])->name('admin.updateProduct'); // Update Product
 });
 
 // Product Routes (Handling Product Management and Deletion)

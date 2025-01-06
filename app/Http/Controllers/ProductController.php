@@ -70,4 +70,46 @@ class ProductController extends Controller
         // Redirect or return a success message after deletion
         return redirect()->route('admin.manageProducts')->with('status', 'Product deleted successfully!');
     }
+
+    // Method to show the product editing form
+    public function editProduct($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        return view('admin.editProduct', compact('product'));
+    }
+
+    // Method to update the product
+    public function updateProduct(Request $request, $productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        // Validate the form data
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'product_price' => 'required|integer|min:0',
+            'product_description' => 'required|string',
+            'how_to_use' => 'required|string',
+            'product_ingredients' => 'required|string',
+            'product_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        // Update the product fields
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->product_description = $request->product_description;
+        $product->how_to_use = $request->how_to_use;
+        $product->product_ingredients = $request->product_ingredients;
+
+        if ($request->hasFile('product_image')) {
+            // Store the uploaded image
+            $imagePath = $request->file('product_image')->store('product_images', 'public');
+            $product->product_image = $imagePath;
+        }
+
+        $product->save(); // Save the updated product
+
+        // Redirect after the product is updated
+        return redirect()->route('admin.manageProducts')->with('status', 'Product updated successfully!');
+    }
 }
