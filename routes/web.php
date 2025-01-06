@@ -42,6 +42,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/manageProducts', [AdminController::class, 'manageProducts'])->name('admin.manageProducts');
 });
 
+// Product Routes (Handling Product Management and Deletion)
+Route::middleware('auth:admin')->group(function () {
+    Route::delete('/admin/deleteProduct/{productId}', [ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
+});
 
 // Other Routes (Leaving other routes untouched as you provided them)
 Route::middleware(['auth', 'verified'])->group(function () {

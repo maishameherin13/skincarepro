@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Models\Product; // Assuming you have a Product model
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        // Search functionality
         $search = $request->input('search');
         $productsQuery = Product::query();
 
@@ -44,7 +45,6 @@ class ProductController extends Controller
             $favorites[$product_id] = [
                 'name' => $product->product_name,
                 'price' => $product->product_price,
-                
             ];
             session()->put('favorites', $favorites);
 
@@ -58,5 +58,16 @@ class ProductController extends Controller
     {
         $favorites = session()->get('favorites', []);
         return view('favorites', compact('favorites'));
+    }
+
+    // New method to delete product (moved from AdminController)
+    public function deleteProduct($productId)
+    {
+        // Find the product by ID and delete it
+        $product = Product::findOrFail($productId);
+        $product->delete();
+
+        // Redirect or return a success message after deletion
+        return redirect()->route('admin.manageProducts')->with('status', 'Product deleted successfully!');
     }
 }

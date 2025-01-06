@@ -6,6 +6,11 @@
             Manage Products
         </div>
 
+        @if(session('status'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('status') }}
+            </div>
+        @endif
         
         <!-- Table of Products -->
         <div class="mt-6">
@@ -25,12 +30,18 @@
                             <td class="px-4 py-2 border">{{ $product->product_name }}</td>
                             <td class="px-4 py-2 border">{{ $product->product_price }}</td>
                             <td class="px-4 py-2 border">
+                                <!-- Edit Button -->
                                 <button class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 transition">
                                     Edit
                                 </button>
-                                <button class="bg-red-500 text-white p-2 rounded hover:bg-red-600 transition">
-                                    Delete
-                                </button>
+                                <!-- Delete Button (use a form to send DELETE request) -->
+                                <form action="{{ route('admin.deleteProduct', $product->product_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 transition">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
