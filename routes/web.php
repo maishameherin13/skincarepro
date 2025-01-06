@@ -37,6 +37,22 @@ Route::middleware('auth:admin')->group(function () {
     // Remove Admin (List and remove admins)
     Route::get('/admin/removeAdmin', [AdminController::class, 'removeAdmin'])->name('admin.removeAdmin');
     Route::delete('/admin/removeAdmin/{adminId}', [AdminController::class, 'removeAdminSubmit'])->name('admin.removeAdminSubmit');
+
+    // Manage Products Page
+    Route::get('/admin/manageProducts', [AdminController::class, 'manageProducts'])->name('admin.manageProducts');
+
+    // Add Product Route
+    Route::get('/admin/addProduct', [ProductController::class, 'addProductForm'])->name('admin.addProductForm'); // Show Add Product Form
+    Route::post('/admin/addProduct', [ProductController::class, 'storeProduct'])->name('admin.storeProduct'); // Store New Product
+    
+    // Product Edit Routes (Edit and Update a Product)
+    Route::get('/admin/editProduct/{productId}', [ProductController::class, 'editProduct'])->name('admin.editProduct'); // Edit Product Form
+    Route::post('/admin/editProduct/{productId}', [ProductController::class, 'updateProduct'])->name('admin.updateProduct'); // Update Product
+});
+
+// Product Routes (Handling Product Management and Deletion)
+Route::middleware('auth:admin')->group(function () {
+    Route::delete('/admin/deleteProduct/{productId}', [ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
 });
 
 // Other Routes (Leaving other routes untouched as you provided them)
