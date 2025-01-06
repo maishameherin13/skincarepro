@@ -11,7 +11,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        
+
         <!-- Table of Products -->
         <div class="mt-6">
             <table class="min-w-full table-auto">
@@ -47,6 +47,13 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+
+        <!-- Add Product Button placed below the table -->
+        <div class="mt-6">
+            <a href="{{ route('admin.addProductForm') }}" class="bg-blue-500 text-white p-4 rounded hover:bg-blue-600 transition">
+                Add Product
+            </a>
         </div>
     </div>
 @endsection

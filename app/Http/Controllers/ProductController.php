@@ -112,4 +112,43 @@ class ProductController extends Controller
         // Redirect after the product is updated
         return redirect()->route('admin.manageProducts')->with('status', 'Product updated successfully!');
     }
+
+    // Method to show the "Add Product" form
+    public function addProductForm()
+    {
+        return view('admin.addProduct');
+    }
+
+    // Method to store a new product
+    public function storeProduct(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'product_price' => 'required|integer|min:0',
+            'product_description' => 'required|string',
+            'how_to_use' => 'required|string',
+            'product_ingredients' => 'required|string',
+            'product_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        // Create the new product
+        $product = new Product();
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->product_description = $request->product_description;
+        $product->how_to_use = $request->how_to_use;
+        $product->product_ingredients = $request->product_ingredients;
+
+        if ($request->hasFile('product_image')) {
+            // Store the uploaded image
+            $imagePath = $request->file('product_image')->store('product_images', 'public');
+            $product->product_image = $imagePath;
+        }
+
+        $product->save(); // Save the new product
+
+        // Redirect after the product is created
+        return redirect()->route('admin.manageProducts')->with('status', 'Product added successfully!');
+    }
 }
