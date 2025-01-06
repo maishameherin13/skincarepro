@@ -11,7 +11,11 @@ class AdminController extends Controller
     // Manage Admins view (main page)
     public function manageAdmins()
     {
-        return view('admin.manageAdmins');
+        // Fetch all admins from the database
+        $admins = Admin::all();
+
+        // Return the view and pass the admins list
+        return view('admin.manageAdmins', compact('admins'));
     }
 
     // Show the form for adding a new admin
@@ -44,6 +48,21 @@ class AdminController extends Controller
     // Show the form for removing an admin
     public function removeAdmin()
     {
-        return view('admin.removeAdmin'); // View to handle admin removal
+        // Fetch all admins for removal
+        $admins = Admin::all();
+
+        // Return the view and pass the admins list
+        return view('admin.removeAdmin', compact('admins'));
+    }
+
+    // Handle admin removal
+    public function removeAdminSubmit($adminId)
+    {
+        // Find the admin by their ID and delete them
+        $admin = Admin::findOrFail($adminId);
+        $admin->delete();
+
+        // Redirect with a success message
+        return redirect()->route('admin.manageAdmins')->with('status', 'Admin removed successfully!');
     }
 }
